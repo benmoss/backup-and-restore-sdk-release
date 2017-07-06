@@ -1,0 +1,19 @@
+---
+name: example-job
+
+templates:
+  backup.erb: bin/bbr/backup
+  config.json: config/config.json
+
+packages: []
+
+properties:
+  db.username:
+    description: Username clients must use to access Postgres
+  db.password:
+    description: Password clients must use to access Postgres
+  db.port:
+    description: TCP port Postgres listens on
+    default: 5432
+  db.database_name:
+    description: Default Postgres database (it will be created during the startup process)

@@ -1,0 +1,8 @@
+{
+  "host": "<%= p('db.host') %>",
+  "port": <%= p('db.port') %>,
+  "username": "<%= p('db.username') %>",
+  "password": "<%= p('db.password') %>",
+  "adapter": "postgres",
+  "database": "<%= p('db.database_name') %>"
+}

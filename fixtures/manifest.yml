@@ -1,0 +1,51 @@
+---
+name: postgres-sdk
+
+instance_groups:
+- name: thedatabase
+  azs: [z1]
+  instances: 1
+  stemcell: trusty
+  vm_type: medium
+  jobs:
+  - name: postgres-9.4
+    release: bosh
+  - name: database-backuper
+    release: backup-and-restore-sdk
+  - name: example-job
+    release: bbr-sdk-example
+  networks:
+  - name: concourse
+  persistent_disk_type: fifty
+  properties:
+    db:
+      database_name: sandbox
+      host: localhost
+      port: 5524
+      username: pgadmin
+      password: passadmin
+    postgres:
+      database: sandbox
+      user: pgadmin
+      password: passadmin
+      listen_address: 0.0.0.0
+      port: 5524
+
+releases:
+- name: bosh
+  version: 260.3
+- name: backup-and-restore-sdk
+  version: latest
+- name: bbr-sdk-example
+  version: latest
+
+stemcells:
+- alias: trusty
+  os: ubuntu-trusty
+  version: '3421.11'
+
+update:
+  canaries: 1
+  canary_watch_time: 2000
+  max_in_flight: 1
+  update_watch_time: 2000

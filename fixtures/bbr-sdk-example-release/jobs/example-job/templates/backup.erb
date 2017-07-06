@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+CONFIG_JSON=/var/vcap/jobs/example-job/config/config.json
+
+export PG_DUMP_PATH=/var/vcap/packages/postgres-9.6.3/bin/pg_dump
+
+/var/vcap/jobs/database-backuper/bin/backup --artifact-file $BBR_ARTIFACT_DIRECTORY/sqlDump --config $CONFIG_JSON

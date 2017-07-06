@@ -1,0 +1,14 @@
+
+bbr integration tests
+
+1. Create a release
+    1. Will have the bbr backup and restore scripts
+    1. Will have the bbr-sdk-release colocated
+    1. The backup and restore scripts call the bbr-sdk script.
+1. Deploy a release (maybe using the pipeline, to simplify our end -- make it hard to test locally)
+1. Call bbr backup
+1. Assert that the backup works
+1. Modify the db somehow (dropping a table or DB)
+1. Call bbr restore
+1. Assert that the restore worked
+1. Wrap all that in a pipeline/script
